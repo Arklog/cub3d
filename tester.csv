@@ -1,5 +1,9 @@
 filename,exit_code,output
-doenotexist.cub,1,Invalid map path
+doesnotexist.cub,1,Invalid map path
 empty.cub,1,Invalid map
 urandom.cu,1,Invalid character in map
 invalid_extension.cu,1,Invalid map extension
+wall.cub,1,Invalid map walls
+dimension.cub,1,Invalid map dimension
+invalid_texture.cub,1,Invalid texture
+invalid_texture_path.cub,1,Invalid texture path
