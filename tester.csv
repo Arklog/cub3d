@@ -1,3 +1,5 @@
-empty.cub
-invalid_extension.cu
-urandom.cu
+filename,exit_code,output
+doenotexist.cub,1,Invalid map path
+empty.cub,1,Invalid map
+urandom.cu,1,Invalid character in map
+invalid_extension.cu,1,Invalid map extension
