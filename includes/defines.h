@@ -2,8 +2,8 @@
 // Created by pierre on 2/9/24.
 //
 
-#ifndef CUB3D_DEFINES_H
-#define CUB3D_DEFINES_H
+#ifndef DEFINES_H
+#define DEFINES_H
 
 # ifndef FOV
 #  define FOV 60.0f
@@ -16,7 +16,7 @@
 # endif
 
 typedef enum e_errors {
-	E_NO_ERROR,
+	E_NO_ERROR = 0,
 	E_INVALID_ARGUMENTS,
 	E_MLX_INIT,
 	E_MLX_WINDOW,
@@ -37,7 +37,7 @@ typedef enum e_errors {
 	E_ALLOCATION_FAILURE,
 	E_IO_ERROR,
 	E_ERROR_COUNT,
-} t_errors;
+}	t_errors;
 
 typedef enum e_texture_index {
 	TEXTURE_NORTH,
@@ -47,7 +47,7 @@ typedef enum e_texture_index {
 	TEXTURE_FLOOR,
 	TEXTURE_CEILING,
 	TEXTURE_COUNT,
-} t_texture_index;
+}	t_texture_index;
 
 typedef enum e_texture_type {
 	T_COLOR,
