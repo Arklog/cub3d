@@ -7,3 +7,5 @@ wall.cub,1,Invalid map walls
 dimension.cub,1,Invalid map dimension
 invalid_texture.cub,1,Invalid texture
 invalid_texture_path.cub,1,Invalid texture path
+duplicate_texture.cub,1,Texture already defined
+normal.cub,0,

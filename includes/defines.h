@@ -1,0 +1,58 @@
+//
+// Created by pierre on 2/9/24.
+//
+
+#ifndef CUB3D_DEFINES_H
+#define CUB3D_DEFINES_H
+
+# ifndef FOV
+#  define FOV 60.0f
+# endif
+# ifndef SCREEN_RATIO
+#  define SCREEN_RATIO (16.0f / 9.0f)
+# endif
+# ifndef FOV_HEIGHT
+#  define FOV_HEIGHT (FOV / SCREEN_RATIO)
+# endif
+
+typedef enum e_errors {
+	E_NO_ERROR,
+	E_INVALID_ARGUMENTS,
+	E_MLX_INIT,
+	E_MLX_WINDOW,
+	E_MLX_IMAGE,
+	E_MLX_LOOP_HOOK,
+	E_MLX_LOOP,
+	E_MAP_ERROR,
+	E_MAP_INVALID_EXTENSION,
+	E_MAP_INVALID_DIMENSIONS,
+	E_MAP_INVALID_PATH,
+	E_MAP_INVALID_CHAR,
+	E_MAP_INVALID_WALL,
+	E_TEXTURE_ERROR,
+	E_TEXTURE_MISSING,
+	E_TEXTURE_ALREADY_LOADED,
+	E_TEXTURE_INVALID_PATH,
+	E_COLOR_INVALID,
+	E_ALLOCATION_FAILURE,
+	E_IO_ERROR,
+	E_ERROR_COUNT,
+} t_errors;
+
+typedef enum e_texture_index {
+	TEXTURE_NORTH,
+	TEXTURE_SOUTH,
+	TEXTURE_WEST,
+	TEXTURE_EAST,
+	TEXTURE_FLOOR,
+	TEXTURE_CEILING,
+	TEXTURE_COUNT,
+} t_texture_index;
+
+typedef enum e_texture_type {
+	T_COLOR,
+	T_TEXTURE,
+	T_ANIMATED_TEXTURE,
+} t_texture_type;
+
+#endif //CUB3D_DEFINES_H
