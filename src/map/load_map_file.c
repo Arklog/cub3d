@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_map_file.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 15:44:52 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/04 15:45:39 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 #include "cub3d.h"
 
@@ -66,7 +78,7 @@ t_errors	load_map_file(const char *filename, t_parser *parser) {
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return E_MAP_INVALID_PATH;
+		return (E_MAP_FILE_ERROR);
 	n = read(fd, buffer, BUFFER_SIZE);
 	while (n > 0)
 	{

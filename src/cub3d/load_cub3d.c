@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:17:20 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 14:45:26 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:43:29 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ t_errors	load_cub3d(const char *filename, t_cub3d *cub3d)
 	if (code)
 		return (code);
 	code = parse_map(cub3d);
+	if (code)
+		return (code);
+	code = check_map(&(cub3d->map));
 	if (code)
 		return (code);
 	return (E_NO_ERROR);

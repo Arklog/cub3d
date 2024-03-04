@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 14:36:26 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:13:58 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_map {
 	char	**map;
 	size_t	width;
 	size_t	height;
+	t_pos	starting_pos;
 }	t_map;
 
 typedef union u_color {

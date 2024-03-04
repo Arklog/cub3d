@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_cub3d.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 15:44:25 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/04 15:44:26 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "cub3d.h"
@@ -10,7 +22,7 @@ static const char	*g_error_msg[E_ERROR_COUNT] = {
 [E_MLX_WINDOW] = "Failed to create window",
 [E_MAP_INVALID_EXTENSION] = "Invalid map extension",
 [E_MAP_INVALID_DIMENSIONS] = "Invalid map dimension",
-[E_MAP_INVALID_PATH] = "Invalid map path",
+[E_MAP_INVALID_WALL] = "Map must be surrounded by walls",
 [E_MAP_INVALID_CHAR] = "Invalid character in map",
 [E_TEXTURE_ERROR] = "Invalid texture",
 [E_TEXTURE_INVALID_PATH] = "Invalid texture path",

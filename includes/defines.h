@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:20:13 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 14:06:20 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:18:55 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define WEST 'W'
 # define EAST 'E'
 # define NONE ' '
+# define PLAYERSTR "NSWE"
+# define MAP_ALLOWED_CHAR "NSEW01 \f\n\r\t\v"
 
 
 /**
@@ -66,11 +68,12 @@ typedef enum e_errors {
 	E_MLX_LOOP_HOOK,
 	E_MLX_LOOP,
 	E_MAP_ERROR,
+	E_MAP_FILE_ERROR,
 	E_MAP_INVALID_EXTENSION,
 	E_MAP_INVALID_DIMENSIONS,
-	E_MAP_INVALID_PATH,
 	E_MAP_INVALID_CHAR,
 	E_MAP_INVALID_WALL,
+	E_MAP_NO_STARTPOS,
 	E_TEXTURE_ERROR,
 	E_TEXTURE_MISSING,
 	E_TEXTURE_ALREADY_LOADED,
