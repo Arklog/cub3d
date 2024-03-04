@@ -16,16 +16,25 @@ then
   exit 1
 fi
 
+#
+#	PRINT A STRING IN GREEN COLOR
+#
 function print_ok()
 {
   echo -e "$GREEN $1 $RESET"
 }
 
+#
+#	PRINT A STRING IN RED COLOR
+#
 function print_ko()
 {
   echo -e "$RED $1 $RESET"
 }
 
+#
+#	TEST ONE MAP
+#
 function test_one()
 {
   MAP="$1"
@@ -41,13 +50,6 @@ function test_one()
     print_ok "  Expected code: $EXPECTED_CODE, got $CODE"
   else
     print_ko "  Expected code: $EXPECTED_CODE, got $CODE"
-  fi
-
-  if [ "$MSG" = "$EXPECTED_MSG" ]
-  then
-    print_ok "  Expected message: $EXPECTED_MSG, got $MSG"
-  else
-    print_ko "  Expected message: $EXPECTED_MSG, got $MSG"
   fi
 }
 

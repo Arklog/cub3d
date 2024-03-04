@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:44:25 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 15:44:26 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:50:40 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static const char	*g_error_msg[E_ERROR_COUNT] = {
 [E_MAP_ERROR] = "Invalid map",
 [E_MLX_INIT] = "Failed to init mlx",
 [E_MLX_WINDOW] = "Failed to create window",
+[E_MAP_FILE_ERROR] = "Invalid map path",
 [E_MAP_INVALID_EXTENSION] = "Invalid map extension",
 [E_MAP_INVALID_DIMENSIONS] = "Invalid map dimension",
 [E_MAP_INVALID_WALL] = "Map must be surrounded by walls",
@@ -61,11 +62,37 @@ static void	free_mlx(t_cub3d *cub)
 		mlx_destroy_display(cub->mlx.mlx);
 }
 
+static void	free_parser(t_parser *parser)
+{
+	if (!parser)
+		return ;
+	if (parser->buffer)
+		free(parser->buffer);
+	if (parser->lines)
+		free(parser->lines);
+}
+
+static void free_map(t_map *map)
+{
+	size_t	i;
+
+	if (!map)
+		return ;
+	if (map->buffer)
+		free(map->buffer);
+	if (!map->map)
+		return ;
+	i = 0;
+	while (map->map[i])
+		free(map->map[i++]);
+	free(map->map);
+}
+
 void	exit_cub3d(t_cub3d *cub3d, t_errors code)
 {
-	if (cub3d->parser.buffer)
-		free(cub3d->parser.buffer);
 	free_mlx(cub3d);
+	free_parser(&(cub3d->parser));
+	free_map(&(cub3d->map));
 	if (code)
 		printf("Error\n%s\n", g_error_msg[code]);
 	exit(code > 0);
