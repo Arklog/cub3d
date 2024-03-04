@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_color.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 14:46:30 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/04 14:46:58 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 
-static u_int8_t strtobyte(const char *str, char **endptr)
+static u_int8_t	strtobyte(const char *str, char **endptr)
 {
 	u_int64_t			v;
-	char 				*needle;
+	char				*needle;
 	static const char	*base = "0123456789";
 
 	v = 0;
@@ -22,12 +34,12 @@ static u_int8_t strtobyte(const char *str, char **endptr)
 	return (v);
 }
 
-static const char *parse_one(char *line, u_int8_t *field, int last)
+static const char	*parse_one(char *line, u_int8_t *field, int last)
 {
-	char *endptr;
-	char *end;
-	char *beg;
-	long v;
+	char	*endptr;
+	char	*end;
+	char	*beg;
+	long	v;
 
 	while (*line && ft_isspace(*line))
 		++line;
@@ -60,6 +72,6 @@ t_errors	load_color(const char *line, t_texture *tex)
 	if (!line)
 		return (E_COLOR_INVALID);
 	tex->type = T_COLOR;
-	tex->data.color = c;
+	tex->u_data.color = c;
 	return (E_NO_ERROR);
 }

@@ -22,12 +22,12 @@ static void	free_texture(t_texture *tex, t_cub3d *cub)
 	size_t 				i;
 	t_animated_texture	*atex;
 
-	if (tex->type == T_TEXTURE && tex->data.texture.data)
-		mlx_destroy_image(cub->mlx.mlx, tex->data.texture.data);
+	if (tex->type == T_TEXTURE && tex->u_data.texture.data)
+		mlx_destroy_image(cub->mlx.mlx, tex->u_data.texture.data);
 	else if (tex->type == T_ANIMATED_TEXTURE)
 	{
 		i = 0;
-		atex = &(tex->data.animated_texture);
+		atex = &(tex->u_data.animated_texture);
 		while (i < atex->count)
 		{
 			if (atex->textures[i].data)

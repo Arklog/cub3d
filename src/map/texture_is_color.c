@@ -1,15 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_is_color.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 14:47:37 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/04 14:47:59 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 
 /**
- * Check if the line is a color, spaces can be present before and after the color. If last is false,
- * a comma must be present after the color. Spaces can be present before the comma.
+ * Check if the line is a color, spaces can be present before and after
+ * the color. If last is false, a comma must be present after the color.
+ * Spaces can be present before the comma.
+ * 
  * @param line
  * @param last
  * @return
  */
 static int	check_color(const char **line, int last)
 {
-	int ok;
+	int	ok;
 
 	if (!**line)
 		return (0);

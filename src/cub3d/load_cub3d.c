@@ -1,10 +1,19 @@
-//
-// Created by pierre on 2/6/24.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_cub3d.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 13:17:20 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/04 14:45:26 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "map.h"
 
-static int check_map_extension(const char *filename)
+static int	check_map_extension(const char *filename)
 {
 	static const u_int32_t	ext = 0x6275632e;
 	size_t					len;
@@ -15,7 +24,7 @@ static int check_map_extension(const char *filename)
 	return (E_NO_ERROR);
 }
 
-static t_errors init_mlx(t_cub3d *cub)
+static t_errors	init_mlx(t_cub3d *cub)
 {
 	cub->mlx.mlx = mlx_init();
 	if (!cub->mlx.mlx)
@@ -26,7 +35,7 @@ static t_errors init_mlx(t_cub3d *cub)
 	return (E_NO_ERROR);
 }
 
-t_errors load_cub3d(const char *filename, t_cub3d *cub3d)
+t_errors	load_cub3d(const char *filename, t_cub3d *cub3d)
 {
 	t_errors	code;
 
@@ -39,6 +48,9 @@ t_errors load_cub3d(const char *filename, t_cub3d *cub3d)
 	if (code)
 		return (code);
 	code = load_textures(cub3d);
+	if (code)
+		return (code);
+	code = parse_map(cub3d);
 	if (code)
 		return (code);
 	return (E_NO_ERROR);
