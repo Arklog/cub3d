@@ -49,15 +49,10 @@ static void	free_mlx(t_cub3d *cub)
 		mlx_destroy_display(cub->mlx.mlx);
 }
 
-static void	free_map(t_map *map)
-{
-	if (map->file.raw_data)
-		free(map->file.raw_data);
-}
-
 void	exit_cub3d(t_cub3d *cub3d, t_errors code)
 {
-	free_map(&(cub3d->map));
+	if (cub3d->parser.buffer)
+		free(cub3d->parser.buffer);
 	free_mlx(cub3d);
 	if (code)
 		printf("Error\n%s\n", g_error_msg[code]);

@@ -8,10 +8,12 @@
 #include <sys/types.h>
 #include "defines.h"
 
+
 typedef struct s_pos {
 	int x;
 	int y;
 } t_pos;
+
 
 typedef struct s_player {
 	t_pos	pos;
@@ -20,12 +22,26 @@ typedef struct s_player {
 	float	rad;
 } t_player;
 
+
+/**
+ * @brief The parser structure
+ *
+ * @var buffer		The buffer containing the file content
+ * @var buffer_size	The size of the buffer
+ * @var lines		The lines of the file
+ * @var nlines		The number of lines
+ * @var line_index	The current line index
+ */
+typedef struct s_parser {
+	char	*buffer;
+	size_t	buffer_size;
+	char	**lines;
+	size_t	nlines;
+	size_t	line_index;
+} t_parser;
+
+
 typedef struct s_map {
-	struct {
-		char	*filename;
-		char	*raw_data;
-		size_t	buffer_size;
-	} file;
 	const char      **buffer;
 	const char		**lines;
 	size_t			nlines;
@@ -66,6 +82,7 @@ typedef struct s {
 } t_texture;
 
 typedef struct s_cub3d {
+	t_parser        parser;
 	t_map			map;
 	t_texture	textures[TEXTURE_COUNT];
 	struct s_mlx {

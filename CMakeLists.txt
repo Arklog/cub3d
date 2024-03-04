@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 project(cub3d C)
 
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(includes libft minilibx-linux)
 file(GLOB_RECURSE SRC "src/*.c")

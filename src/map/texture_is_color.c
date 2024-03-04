@@ -32,7 +32,7 @@ static int check_char(const char *line)
 	return (ft_isdigit(*line) || *line == ',' || ft_isspace(*line));
 }
 
-int	texture_is_color(const char *line)
+int texture_is_color(const char *line)
 {
 	const char	*iter;
 

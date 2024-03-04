@@ -17,7 +17,14 @@
 
 # define MAP_CHAR "01NSEW"
 
-t_errors	load_map(t_map *map);
+/**
+ * Load the file and store store it in the parser
+ *
+ * @param filename
+ * @param parser
+ * @return
+ */
+t_errors	load_map_file(const char *filename, t_parser *parser);
 
 int 		texture_is_color(const char *line);
 

@@ -18,7 +18,14 @@
 # include "ft_ctype.h"
 # include "mlx.h"
 
-int	load(t_cub3d *cub3d);
+/**
+ * Load cub3d
+ *
+ * @param filename
+ * @param cub3d
+ * @return
+ */
+t_errors	load_cub3d(const char *filename, t_cub3d *cub3d);
 
 int load_textures(t_cub3d *cub3d);
 
