@@ -2,11 +2,11 @@
 // Created by pierre on 2/5/24.
 //
 
-#ifndef CUB3D_TYPES_H
-#define CUB3D_TYPES_H
+#ifndef TYPES_H
+# define TYPES_H
 
-#include <sys/types.h>
-#include "defines.h"
+# include <sys/types.h>
+# include "defines.h"
 
 
 typedef struct s_pos {
@@ -43,7 +43,7 @@ typedef struct s_parser {
 
 typedef struct s_map {
 	const char      **buffer;
-	const char		**lines;
+	const char		**lines;textures
 	size_t			nlines;
 	unsigned int	width;
 	unsigned int	height;

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 16:16:33 by pducloux          #+#    #+#             */
+/*   Updated: 2024/03/01 16:16:44 by pducloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 
 static t_errors	check_dimensions(t_map *map)
 {
-	const char **iter;
-	size_t width;
-	size_t height;
+	const char	**iter;
+	size_t		width;
+	size_t		height;
 
 	height = 0;
 	iter = map->lines;
@@ -30,7 +42,7 @@ static t_errors check_char(t_map *map)
 		line = *iter;
 		while (line)
 		{
-			if (!ft_strchr(MAP_CHAR, *(line++)))
+			if (!ft_strchr(MAPFILE_CHARSET, *(line++)))
 				return (E_MAP_INVALID_CHAR);
 		}
 		++iter;
