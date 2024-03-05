@@ -6,14 +6,14 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:11:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 16:26:11 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:13:01 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include <stdio.h>
 
-#define CHECKBUFF_TOCHECK '#'
+#define CHECKBUFF_TOCHECK ' '
 
 static t_errors	setup_map(t_map *map)
 {
@@ -53,7 +53,8 @@ static t_errors	create_map_check_buffer(t_map *map, char ***placeholder)
 			*placeholder = buff;
 			return (E_ALLOCATION_FAILURE);
 		}
-		ft_memset(buff[i++], CHECKBUFF_TOCHECK, map->width + 1);
+		ft_memset(buff[i], CHECKBUFF_TOCHECK, map->width);
+		buff[i++][map->width] = 0;
 	}
 	*placeholder = buff;
 	return (E_NO_ERROR);

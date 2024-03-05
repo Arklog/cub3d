@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/04 14:18:06 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:50:58 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,19 @@ int			run(t_cub3d *cub3d);
  */
 void		exit_cub3d(t_cub3d *cub3d, t_errors code);
 
-int		ft_isspacestr(const char *str);
+int			ft_isspacestr(const char *str);
 
-int		ft_isspacedigitstr(const char *str);
+int			ft_isspacedigitstr(const char *str);
+
+/**
+ * @brief Get the pixel color object
+ * 
+ * @param cub 	Cub3d datas
+ * @param idx	Texture index
+ * @param x 	Relative position of the texture x
+ * @param y 	Relative position of the texture y
+ * @return t_color 
+ */
+t_color		get_pixel_color(t_cub3d *cub, t_texture_index idx, double x, double y);
 
 #endif //CUB3D_CUB3D_H

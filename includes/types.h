@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 15:13:58 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:57:57 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,36 +65,76 @@ typedef struct s_map {
 	t_pos	starting_pos;
 }	t_map;
 
+
+# ifdef LITTLE_ENDIAN
+
 typedef union u_color {
 	struct {
-		unsigned char	r;
-		unsigned char	g;
-		unsigned char	b;
-		unsigned char	a;
+		u_int8_t	a;
+		u_int8_t	r;
+		u_int8_t	g;
+		u_int8_t	b;
 	};
-	unsigned int	value;
+	u_int32_t	value;
 }	t_color;
 
+# else
+
+typedef union u_color {
+	struct {
+		u_int8_t	b;
+		u_int8_t	g;
+		u_int8_t	r;
+		u_int8_t	a;
+	};
+	u_int32_t	value;
+}	t_color;
+
+# endif
+
+
+/**
+ * @brief A texture
+ * 
+ * @var data		Mlx texure data
+ * @var width		Width of the texture
+ * @var heigth		Height of the texture
+ * @var bpp			Bytes per pixel
+ * @var line_size	Line size
+ * @var	endian		Big or little (big is 1, little 0)
+ */
 typedef struct s_texture_simple {
-	char	*path;
 	void	*data;
 	int		width;
 	int		height;
+	char	*raw;
+	int		bpp;
+	int		line_size;
+	int		endian;
 }	t_texture_simple;
 
+/**
+ * @brief Represent an animated texture
+ * 
+ * @var	texures		A texture buffer
+ * @var count		Numer of texture in the buffer
+ * @var current		Current index of the texture in the buffer
+ */
 typedef struct s_animated_texture {
 	t_texture_simple	*textures;
 	size_t				count;
 	size_t				current;
 }	t_animated_texture;
 
+union u_texture {
+	t_color				color;
+	t_texture_simple	texture;
+	t_animated_texture	animated_texture;
+};
+
 typedef struct s {
 	t_texture_type	type;
-	union {
-		t_color				color;
-		t_texture_simple	texture;
-		t_animated_texture	animated_texture;
-	}				u_data;
+	union u_texture	u_data;
 }	t_texture;
 
 typedef struct s_cub3d {

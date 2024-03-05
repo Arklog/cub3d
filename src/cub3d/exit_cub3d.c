@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:44:25 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 16:50:40 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:01:16 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,12 @@ static void	free_parser(t_parser *parser)
 
 static void free_map(t_map *map)
 {
-	size_t	i;
-
 	if (!map)
 		return ;
 	if (map->buffer)
 		free(map->buffer);
-	if (!map->map)
-		return ;
-	i = 0;
-	while (map->map[i])
-		free(map->map[i++]);
-	free(map->map);
+	if (map->map)
+		free(map->map);
 }
 
 void	exit_cub3d(t_cub3d *cub3d, t_errors code)
