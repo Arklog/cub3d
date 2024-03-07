@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:11:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/05 16:13:01 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:38:45 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,11 @@ static t_errors	check_walls(t_map *map, char **checkbuff, t_pos pos)
 	while (stack)
 	{
 		pop(&stack, &pos);
-		if (map->map[pos.y][pos.x] == EMPTY)
+		if (map->map[pos.y][pos.x] == NONE)
 			return (clear(&stack), E_MAP_INVALID_WALL);
-		if (gen_new_pos_and_push(&stack, pos, checkbuff, map))
+		if (!(map->map[pos.y][pos.x] == WALL) && gen_new_pos_and_push(&stack, pos, checkbuff, map))
 			return (clear(&stack), E_ALLOCATION_FAILURE);
+		print_checkbuff(checkbuff);
 	}
 	return (E_NO_ERROR);
 }
