@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "map.h"
+#include "stack.h"
 #include <stdio.h>
 
 #define CHECKBUFF_TOCHECK ' '
@@ -26,8 +27,8 @@ static t_errors	setup_map(t_map *map)
 		iter = ft_strchr1(map->map[i], PLAYERSTR);
 		if (iter)
 		{
-			map->starting_pos.x = iter - map->map[i];
-			map->starting_pos.y = i;
+			map->starting_pos.x = (int)(iter - map->map[i]);
+			map->starting_pos.y = (int)i;
 			return (E_NO_ERROR);
 		}
 		++i;
@@ -84,6 +85,37 @@ static void print_checkbuff(char **checkbuff)
 }
 
 /**
+ * Generate surrounding positions and push them to the stack if not already checked
+ * @param stack
+ * @param cpos
+ * @param checkbuff
+ */
+static t_errors gen_new_pos_and_push(t_posstack **stack, t_pos cpos, char **checkbuff, t_map *map)
+{
+	t_pos	newpos[4];
+	t_pos 	c;
+	int i;
+
+	newpos[0] = (t_pos){cpos.x + 1, cpos.y};
+	newpos[1] = (t_pos){cpos.x - 1, cpos.y};
+	newpos[2] = (t_pos){cpos.x, cpos.y + 1};
+	newpos[3] = (t_pos){cpos.x, cpos.y - 1};
+	i = 0;
+	while (i < 4)
+	{
+		c = newpos[i++];
+		if (!(c.x < 0 || c.y < 0 || (size_t)c.x >= map->width || (size_t)c.y >= map->height)
+			&& checkbuff[c.y][c.x] == CHECKBUFF_TOCHECK)
+		{
+			if (push(stack, c))
+				return (E_ALLOCATION_FAILURE);
+			checkbuff[c.y][c.x] = map->map[c.y][c.x];
+		}
+	}
+	return (E_NO_ERROR);
+}
+
+/**
  * @brief Check if the map is surrounded by walls
  * 
  * @param map			The map
@@ -94,29 +126,20 @@ static void print_checkbuff(char **checkbuff)
  */
 static t_errors	check_walls(t_map *map, char **checkbuff, t_pos pos)
 {
-	char	tile;
-	t_pos	surrounding[4];
+	t_posstack *stack;
 
-	if (pos.x < 0 || pos.y < 0)
-		return (E_MAP_INVALID_WALL);
-	print_checkbuff(checkbuff);
-	tile = map->map[pos.y][pos.x];
-	if (checkbuff[pos.y][pos.x] != CHECKBUFF_TOCHECK)
-		return (E_NO_ERROR);
-	else
-		checkbuff[pos.y][pos.x] = tile;
-	if (tile == WALL)
-		return (E_NO_ERROR);
-	else if (tile == NONE || !tile)
-		return (E_MAP_INVALID_WALL);
-	surrounding[0] = (t_pos){.x = pos.x, .y = pos.y + 1};
-	surrounding[1] = (t_pos){.x = pos.x + 1, .y = pos.y};
-	surrounding[2] = (t_pos){.x = pos.x - 1, .y = pos.y};
-	surrounding[3] = (t_pos){.x = pos.x, .y = pos.y - 1};
-	return (check_walls(map, checkbuff, surrounding[0])
-		|| check_walls(map, checkbuff, surrounding[1])
-		|| check_walls(map, checkbuff, surrounding[2])
-		|| check_walls(map, checkbuff, surrounding[3]));
+	stack = NULL;
+	push(&stack, pos);
+	checkbuff[pos.y][pos.x] = map->map[pos.y][pos.x];
+	while (stack)
+	{
+		pop(&stack, &pos);
+		if (map->map[pos.y][pos.x] == EMPTY)
+			return (clear(&stack), E_MAP_INVALID_WALL);
+		if (gen_new_pos_and_push(&stack, pos, checkbuff, map))
+			return (clear(&stack), E_ALLOCATION_FAILURE);
+	}
+	return (E_NO_ERROR);
 }
 
 static t_errors check_invalid_char(t_map *map)
