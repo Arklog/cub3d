@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/08 14:51:19 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/08 15:43:14 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,15 @@ int			ft_isspacedigitstr(const char *str);
  * @return t_color 
  */
 t_color		get_pixel_color(t_cub3d *cub, t_texture_index idx, double x, double y);
+
+int			ft_key_event(t_game *game);
+int			ft_key_press(int keycode, t_game *game);
+int			ft_key_release(int keycode, t_game *game);
+int			ft_playerview(t_game *game);
+void		ft_display(t_game *game, t_point wall, t_ray ray);
+double		ft_get_alpha(double ray_angle);
+double		ft_get_beta(t_player p1, double ray_angle);
+void		ft_set_ray(t_ray *ray, t_player p1, int init);
+double		distance(t_player p1, t_point a, double alpha, double ray_angle);
 
 #endif //CUB3D_CUB3D_H
