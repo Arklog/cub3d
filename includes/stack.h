@@ -1,14 +1,10 @@
-//
-// Created by pierre on 3/7/24.
-//
+#ifndef STACK_H
+# define STACK_H
 
-#ifndef CUB3D_STACK_H
-#define CUB3D_STACK_H
+# include <stdlib.h>
 
-#include <stdlib.h>
-
-#include "types.h"
-#include "defines.h"
+# include "types.h"
+# include "defines.h"
 
 typedef struct t_posstack
 {

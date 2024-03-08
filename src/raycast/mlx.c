@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 03:19:13 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/08 15:03:22 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/08 15:45:29 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_key_press(int keycode, t_game *game)
 		game->rotation_x = 1;
 	else if (keycode == ESC)
 	{
-		ft_exit(game);
+		exit_cub3d(game->cub3d, E_NO_ERROR);
 		return (1);
 	}
 	return (0);

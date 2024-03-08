@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:20:13 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/08 14:42:46 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/08 16:02:28 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
-
 
 /**
  * ID of the textures in the map file,

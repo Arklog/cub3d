@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 03:37:54 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/08 14:54:06 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/08 15:45:45 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
 /* function that search til it finds a wall, with diff having 
 the distance in x and y for the next intersection with a line

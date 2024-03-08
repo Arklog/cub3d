@@ -9,5 +9,5 @@ file(GLOB_RECURSE SRC "src/cub3d/*.c" "src/map/*.c" "src/raycast/*.c" "src/stack
 
 add_executable(cub3d ${SRC} src/main.c)
 target_compile_options(cub3d PRIVATE -Wall -Wextra -Werror -DLITTLE_ENDIAN)
-target_link_libraries(cub3d ft mlx X11 Xext)
+target_link_libraries(cub3d ft mlx X11 Xext m)
 target_link_directories(cub3d PRIVATE libft minilibx-linux)
