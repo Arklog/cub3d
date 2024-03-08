@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 03:37:54 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/08 15:45:45 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:17:43 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,11 +145,8 @@ int		ft_playerview(t_game *game)
 	int		i;
 
 	i = 0;
-	game->blindspot.x = 0;
-	game->blindspot.y = 0;
-	game->img.mlx_img = mlx_new_image(game->mlx, WIN_LENGHT, WIN_HEIGHT);
-	game->img.addr = mlx_get_data_addr(game->img.mlx_img,
-		&game->img.bits_per_pixel, &game->img.size_line, &game->img.endian);
+	ft_memset(game->img.addr, 0,
+		WIN_HEIGHT * WIN_LENGHT * (game->img.bits_per_pixel / 8));
 	ft_set_ray(&ray, game->p1, 0);
 	while (i < WIN_LENGHT)
 	{

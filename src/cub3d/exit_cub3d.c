@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:44:25 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/05 16:01:16 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:10:30 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	free_mlx(t_cub3d *cub)
 	i = 0;
 	while (i < 6)
 		free_texture(cub->textures + i++, cub);
+	if (cub->game.img.mlx_img)
+		mlx_destroy_image(cub->mlx.mlx, cub->game.img.mlx_img);
 	if (cub->mlx.window)
 		mlx_destroy_window(cub->mlx.mlx, cub->mlx.window);
 	if (cub->mlx.mlx)
