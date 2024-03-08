@@ -61,7 +61,10 @@ static void	free_mlx(t_cub3d *cub)
 	if (cub->mlx.window)
 		mlx_destroy_window(cub->mlx.mlx, cub->mlx.window);
 	if (cub->mlx.mlx)
+	{
 		mlx_destroy_display(cub->mlx.mlx);
+		free(cub->mlx.mlx);
+	}
 }
 
 static void	free_parser(t_parser *parser)

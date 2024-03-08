@@ -29,7 +29,7 @@ static t_color	get_color_from_tex(union u_texture *tex, double x, double y)
 	t = &(tex->texture);
 	xi = x * t->width;
 	yi = y * t->height;
-	c.value = t->line_size * yi + (t->bpp / 8) * x;
+	c.value = t->line_size * yi + (t->bpp / 8) * xi;
 	return (c);
 }
 
