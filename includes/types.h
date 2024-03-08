@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/05 15:57:57 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:49:34 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,37 @@ typedef struct s_pos {
 	int	y;
 }	t_pos;
 
+typedef struct s_point
+{
+	int		x;
+	int		y;
+	char	direction;
+}	t_point;
 
-typedef struct s_player {
-	t_pos	pos;
-	float	xx;
-	float	yy;
-	float	rad;
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}	t_img;
+
+typedef struct s_ray
+{
+	double	angle;
+	int		column;
+	double	alpha;
+	double	beta;
+}	t_ray;
+
+typedef struct s_player
+{
+	int		tile_x;
+	int		tile_y;
+	int		x;
+	int		y;
+	double	pov;
 }	t_player;
 
 
@@ -137,6 +162,22 @@ typedef struct s {
 	union u_texture	u_data;
 }	t_texture;
 
+typedef struct s_game
+{
+	char		**map_data;
+	int			map_height;
+	int			map_lenght;
+	void		*mlx;
+	void		*window;
+	int			move_x;
+	int			move_y;
+	int			rotation_x;
+	t_player	p1;
+	t_point		blindspot;
+	t_img		img;
+	void		*cub3d;
+}	t_game;
+
 typedef struct s_cub3d {
 	t_parser		parser;
 	t_map			map;
@@ -145,6 +186,7 @@ typedef struct s_cub3d {
 		void	*mlx;
 		void	*window;
 	} mlx;
+	t_game		game;
 }	t_cub3d;
 
 #endif //CUB3D_TYPES_H

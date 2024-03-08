@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:20:13 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 16:18:55 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:42:46 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@
 #  define FLOOR_ID		0x46
 #  define CEILING_ID	0x43
 # endif
+
+# define ESC 			65307
+# define KEY_A 			97
+# define KEY_D 			100
+# define KEY_W 			119
+# define KEY_S 			115
+# define KEY_LEFT		65361
+# define KEY_RIGHT		65363
+# define WIN_LENGHT 	1440
+# define WIN_HEIGHT 	900
+# define TILE 			256
 
 
 /**

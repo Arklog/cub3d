@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/05 15:50:58 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:51:19 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "libft.h"
 # include "ft_ctype.h"
 # include "mlx.h"
+# include <fcntl.h>
+# include <math.h>
+# include <float.h>
 
 /**
  * Load cub3d
