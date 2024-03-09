@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/08 14:49:34 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/09 12:09:29 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_pos {
 
 typedef struct s_point
 {
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	char	direction;
 }	t_point;
 
