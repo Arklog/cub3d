@@ -168,12 +168,12 @@ static t_errors	check_one_startpos(t_map *map)
 
 	i = map->starting_pos.y;
 	if (ft_strchr1(map->map[i] + map->starting_pos.x + 1, PLAYERSTR))
-		return (E_MAP_INVALID_CHAR);
+		return (E_MAP_MULTIPLE_STARTPOS);
 	++i;
 	while (i < map->height)
 	{
 		if (ft_strchr1(map->map[i++], PLAYERSTR))
-			return (E_MAP_INVALID_CHAR);
+			return (E_MAP_MULTIPLE_STARTPOS);
 	}
 	return (E_NO_ERROR);
 }
@@ -185,8 +185,10 @@ t_errors	check_map(t_map *map)
 	tmpbuff = NULL;
 	if (setup_map(map))
 		return (E_MAP_NO_STARTPOS);
-	else if (check_invalid_char(map) || check_one_startpos(map))
+	else if (check_invalid_char(map))
 		return (E_MAP_INVALID_CHAR);
+	else if (check_one_startpos(map))
+		return (E_MAP_MULTIPLE_STARTPOS);
 	else if (create_map_check_buffer(map, &tmpbuff))
 		return (free_split(tmpbuff), E_ALLOCATION_FAILURE);
 	else if (check_walls(map, tmpbuff, map->starting_pos))
