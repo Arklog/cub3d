@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 03:37:54 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/09 12:31:54 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:46:14 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_point	ft_horizontal_inter(t_game *game, double alpha, double ray_angle)
 		diff.y = -TILE;
 	}
 	else
-		a.y = floor((game->p1.y / TILE) * TILE + TILE);
+		a.y = (game->p1.y / TILE) * TILE + TILE;
 	if ((ray_angle >= 90 && ray_angle <= 180) || ray_angle >= 270)
 		a.x = game->p1.x + (a.y - game->p1.y) / tan(alpha * (double)(M_PI / 180));
 	else
@@ -49,7 +49,7 @@ t_point	ft_vertical_inter(t_game *game, double alpha, double ray_angle)
 
 	diff.x = TILE;
 	if (ray_angle <= 90 || ray_angle >= 270)
-		b.x = floor((game->p1.x / TILE) * TILE + TILE);
+		b.x = (game->p1.x / TILE) * TILE + TILE;
 	else
 	{
 		b.x = (game->p1.x / TILE) * TILE;
@@ -75,7 +75,6 @@ t_point	ft_ray_to_wall(t_game *game, double alpha, double ray_angle)
 	t_point	horizontal;
 	t_point	vertical;
 
-	printf("\n\nray : %2f\n", ray_angle);
 	horizontal = ft_horizontal_inter(game, alpha, ray_angle);
 	vertical = ft_vertical_inter(game,alpha,ray_angle);
 	if (distance(game->p1, horizontal) < distance(game->p1, vertical))

@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/09 12:32:52 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:25:57 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ double		distance(t_player p1, t_point a);
 void		ft_set_wall_dir(t_player p1, t_point *wall, int type);
 t_point		ft_find_horizontal(t_game *game, t_point a, t_point diff, double ray_angle);
 t_point		ft_find_vertical(t_game *game, t_point a, t_point diff, double ray_angle);
+void		ft_move_camera(t_game *game);
 
 #endif //CUB3D_CUB3D_H

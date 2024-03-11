@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:04:41 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/09 12:33:53 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:33:24 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,12 @@ void	ft_display(t_game *game, t_point wall, t_ray ray)
 	double	dist;
 	int		pro_height;
 	int		top_wall;
-	int 	i = 0;
 
 	dist = distance(game->p1, wall);
 	if (ray.angle != game->p1.pov)
 		dist = dist * cos(ray.beta * (double)(M_PI / 180));
 	pro_height = floor(((WIN_LENGHT / 2) / tan(30 * (double)(M_PI / 180))) * 
 		(TILE / dist));
-	top_wall = (WIN_HEIGHT / 2) -  (pro_height / 2);
+	top_wall = (WIN_HEIGHT / 2) - (pro_height / 2);
 	ft_draw_wall(game->img, ray.column, top_wall, pro_height);
-	
-	//draw center line
-	while (i < WIN_HEIGHT / 2)
-	{
-		ft_put_pixel(game->img, WIN_LENGHT / 2, WIN_HEIGHT / 4 + i, 255 << 16);
-		i++;
-	}
 }
