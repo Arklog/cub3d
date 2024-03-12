@@ -29,6 +29,8 @@ static t_errors	convert_game_datas(t_cub3d *cub)
 	game->mlx = cub->mlx.mlx;
 	game->blindspot.x = 0;
 	game->blindspot.y = 0;
+	game->p1.tile_x = cub->map.starting_pos.x;
+	game->p1.tile_y = cub->map.starting_pos.y;
 	game->img.mlx_img = mlx_new_image(game->mlx, WIN_LENGHT, WIN_HEIGHT);
 	if (!game->img.mlx_img)
 		return (E_ALLOCATION_FAILURE);
