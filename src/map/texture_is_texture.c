@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_is_texture.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pierre </var/spool/mail/pierre>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/12 15:33:34 by pierre            #+#    #+#             */
+/*   Updated: 2024/03/12 15:34:12 by pierre           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 
-int texture_is_texture(const char *line)
+int	texture_is_texture(const char *line)
 {
 	(void)line;
 	return (1);

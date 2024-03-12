@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:47:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/05 15:54:55 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:32:37 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_color	get_color_from_animated(union u_texture *tex,
 	return (get_color_from_tex(&placeholder, x, y));
 }
 
-t_color (*const g_tex_lookup[3])(union u_texture *, double, double ) = {
+t_color (*const g_tex_lookup[3])(union u_texture *, double x, double y) = {
 get_color_from_color,
 get_color_from_tex,
 get_color_from_animated};

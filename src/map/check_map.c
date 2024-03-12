@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:11:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/07 20:38:45 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:46:34 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,28 +73,19 @@ static void	free_split(char **buff)
 	free(buff);
 }
 
-static void print_checkbuff(char **checkbuff)
-{
-	while (*checkbuff)
-	{
-		printf("%s\n", *checkbuff);
-		++checkbuff;
-	}
-	printf("\n");
-	fflush(stdout);
-}
-
 /**
- * Generate surrounding positions and push them to the stack if not already checked
+ * Generate surrounding positions and push them to
+ * the stack if not already checked
  * @param stack
  * @param cpos
  * @param checkbuff
  */
-static t_errors gen_new_pos_and_push(t_posstack **stack, t_pos cpos, char **checkbuff, t_map *map)
+static t_errors	gen_new_pos_and_push(t_posstack **stack,
+	t_pos cpos, char **checkbuff, t_map *map)
 {
 	t_pos	newpos[4];
-	t_pos 	c;
-	int i;
+	t_pos	c;
+	int		i;
 
 	newpos[0] = (t_pos){cpos.x + 1, cpos.y};
 	newpos[1] = (t_pos){cpos.x - 1, cpos.y};
@@ -104,7 +95,8 @@ static t_errors gen_new_pos_and_push(t_posstack **stack, t_pos cpos, char **chec
 	while (i < 4)
 	{
 		c = newpos[i++];
-		if (!(c.x < 0 || c.y < 0 || (size_t)c.x >= map->width || (size_t)c.y >= map->height)
+		if (!(c.x < 0 || c.y < 0
+				|| (size_t)c.x >= map->width || (size_t)c.y >= map->height)
 			&& checkbuff[c.y][c.x] == CHECKBUFF_TOCHECK)
 		{
 			if (push(stack, c))
@@ -126,7 +118,7 @@ static t_errors gen_new_pos_and_push(t_posstack **stack, t_pos cpos, char **chec
  */
 static t_errors	check_walls(t_map *map, char **checkbuff, t_pos pos)
 {
-	t_posstack *stack;
+	t_posstack	*stack;
 
 	stack = NULL;
 	push(&stack, pos);
@@ -136,14 +128,14 @@ static t_errors	check_walls(t_map *map, char **checkbuff, t_pos pos)
 		pop(&stack, &pos);
 		if (map->map[pos.y][pos.x] == NONE)
 			return (clear(&stack), E_MAP_INVALID_WALL);
-		if (!(map->map[pos.y][pos.x] == WALL) && gen_new_pos_and_push(&stack, pos, checkbuff, map))
+		if (!(map->map[pos.y][pos.x] == WALL)
+			&& gen_new_pos_and_push(&stack, pos, checkbuff, map))
 			return (clear(&stack), E_ALLOCATION_FAILURE);
-		print_checkbuff(checkbuff);
 	}
 	return (E_NO_ERROR);
 }
 
-static t_errors check_invalid_char(t_map *map)
+static t_errors	check_invalid_char(t_map *map)
 {
 	size_t	i;
 	size_t	j;

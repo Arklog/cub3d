@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:47:37 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 14:47:59 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:35:50 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static int	check_color(const char **line, int last)
 	while (ft_isspace(**line))
 		++(*line);
 	while (ft_isdigit(**line))
-		++(*line), ++ok;
+	{
+		++(*line);
+		++ok;
+	}
 	while (ft_isspace(**line))
 		++(*line);
 	if (!last && **line != ',')
@@ -41,12 +44,12 @@ static int	check_color(const char **line, int last)
 	return (ok <= 3 && ok > 0);
 }
 
-static int check_char(const char *line)
+static int	check_char(const char *line)
 {
 	return (ft_isdigit(*line) || *line == ',' || ft_isspace(*line));
 }
 
-int texture_is_color(const char *line)
+int	texture_is_color(const char *line)
 {
 	const char	*iter;
 
@@ -55,5 +58,6 @@ int texture_is_color(const char *line)
 		if (!check_char(iter++))
 			return (0);
 	iter = line;
-	return (check_color(&iter, 0) && check_color(&iter, 0) && check_color(&iter, 1));
+	return (check_color(&iter, 0)
+		&& check_color(&iter, 0) && check_color(&iter, 1));
 }

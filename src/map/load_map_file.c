@@ -6,16 +6,18 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:44:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 15:45:39 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:43:27 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include "cub3d.h"
+#include "types.h"
 
 /**
- * Create a new buffer of size sn + nn and copy the content of src into it, then append app at the end of the buffer.
- * At the end free src, replace it with the new buffer and update the size.
+ * Create a new buffer of size sn + nn and copy the content of src into it,
+ * then append app at the end of the buffer. At the end free src, replace
+ * it with the new buffer and update the size.
  *
  * @param	src	the source buffer
  * @param	app	the buffer to append
@@ -28,11 +30,15 @@
  *
  * @return the new buffer or NULL if an error occurred
  */
-static void *memappend(void **src, void *app, size_t sn, size_t nn, size_t *nsize)
+static void	*memappend(void **src, void *app, t_bsize bsize, size_t *nsize)
 {
 	size_t	nlen;
 	void	*new;
+	size_t	sn;
+	size_t	nn;
 
+	sn = bsize.sn;
+	nn = bsize.nn;
 	nlen = sn + nn;
 	new = malloc(nlen);
 	if (!new)
@@ -46,7 +52,7 @@ static void *memappend(void **src, void *app, size_t sn, size_t nn, size_t *nsiz
 	return (new);
 }
 
-static t_errors split_map(char *data, t_parser *parser)
+static t_errors	split_map(char *data, t_parser *parser)
 {
 	size_t	n;
 	size_t	i;
@@ -71,10 +77,11 @@ static t_errors split_map(char *data, t_parser *parser)
 	return (E_NO_ERROR);
 }
 
-t_errors	load_map_file(const char *filename, t_parser *parser) {
+t_errors	load_map_file(const char *filename, t_parser *parser)
+{
 	int		fd;
-	char		buffer[BUFFER_SIZE];
-	ssize_t		n;
+	char	buffer[BUFFER_SIZE];
+	ssize_t	n;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -82,14 +89,16 @@ t_errors	load_map_file(const char *filename, t_parser *parser) {
 	n = read(fd, buffer, BUFFER_SIZE);
 	while (n > 0)
 	{
-		if (!memappend((void **)&(parser->buffer), buffer, parser->buffer_size, n, &(parser->buffer_size)))
+		if (!memappend((void **)&(parser->buffer), buffer,
+				(t_bsize){parser->buffer_size, n}, &(parser->buffer_size)))
 			return (close(fd), E_ALLOCATION_FAILURE);
 		n = read(fd, buffer, BUFFER_SIZE);
 	}
 	close(fd);
 	if (n < 0)
 		return (E_IO_ERROR);
-	else if (!memappend((void **)&(parser->buffer), "", parser->buffer_size, 1, &(parser->buffer_size)))
+	else if (!memappend((void **)&(parser->buffer), "",
+			(t_bsize){parser->buffer_size, 1}, &(parser->buffer_size)))
 		return (E_ALLOCATION_FAILURE);
 	return (split_map(parser->buffer, parser));
 }

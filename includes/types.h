@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/09 12:09:29 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/12 15:41:40 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <sys/types.h>
 # include "defines.h"
 
+/**
+ * Used in one file to gain one argument
+ */
+typedef struct s_buffsize {
+	size_t sn;
+	size_t nn;
+} t_bsize;
 
 typedef struct s_pos {
 	int	x;

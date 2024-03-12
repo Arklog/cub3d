@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:17:20 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/08 16:02:51 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:31:25 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static t_errors	init_mlx(t_cub3d *cub)
 	cub->mlx.mlx = mlx_init();
 	if (!cub->mlx.mlx)
 		return (E_MLX_INIT);
-	cub->mlx.window = mlx_new_window(cub->mlx.mlx, WIN_LENGHT, WIN_HEIGHT, "cub3d");
+	cub->mlx.window = mlx_new_window(cub->mlx.mlx,
+			WIN_LENGHT, WIN_HEIGHT, "cub3d");
 	if (!cub->mlx.window)
 		return (E_MLX_WINDOW);
 	return (E_NO_ERROR);
