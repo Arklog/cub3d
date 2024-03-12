@@ -29,6 +29,7 @@ static const char	*g_error_msg[E_ERROR_COUNT] = {
 [E_MAP_MULTIPLE_STARTPOS] = "Map has multiple starting player positions",
 [E_TEXTURE_ERROR] = "Invalid texture",
 [E_TEXTURE_INVALID_PATH] = "Invalid texture path",
+[E_TEXTURE_MISSING] = "Missing texture",
 [E_ALLOCATION_FAILURE] = "Memory allocation failure",
 };
 
