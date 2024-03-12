@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/11 17:25:57 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/12 17:29:09 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ int			ft_isspacedigitstr(const char *str);
  * @param y 	Relative position of the texture y
  * @return t_color 
  */
-t_color		get_pixel_color(t_cub3d *cub, t_texture_index idx, double x, double y);
+t_color		get_pixel_colorf(t_cub3d *cub, t_texture_index idx, double x, double y);
+
+t_color		get_pixel_color(t_cub3d *cub, t_texture_index idx, int x, int y);
 
 int			ft_key_event(t_game *game);
 int			ft_key_press(int keycode, t_game *game);

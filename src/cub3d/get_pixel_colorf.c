@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel_color.c                                  :+:      :+:    :+:   */
+/*   get_pixel_colorf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:47:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/12 15:32:37 by pierre           ###   ########.fr       */
+/*   Updated: 2024/03/12 17:30:45 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,15 @@ get_color_from_color,
 get_color_from_tex,
 get_color_from_animated};
 
-t_color	get_pixel_color(t_cub3d *cub, t_texture_index idx, double x, double y)
+t_color	get_pixel_colorf(t_cub3d *cub, t_texture_index idx, double x, double y)
 {
 	t_texture	*tex;
 
 	tex = cub->textures + idx;
 	return (g_tex_lookup[tex->type](&(tex->u_data), x, y));
+}
+
+t_color	get_pixel_color(t_cub3d *cub, t_texture_index idx, int x, int y)
+{
+	return (get_pixel_colorf(cub, idx, x / TILE, y / TILE));
 }
