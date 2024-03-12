@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:08:18 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/08 16:14:37 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:46:24 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static t_errors	convert_game_datas(t_cub3d *cub)
 	game->blindspot.y = 0;
 	game->p1.tile_x = cub->map.starting_pos.x;
 	game->p1.tile_y = cub->map.starting_pos.y;
-	game->p1.x = cub->map.starting_pos.x;
-	game->p1.y = cub->map.starting_pos.y;
+	game->p1.x = cub->map.starting_pos.x * TILE + TILE / 2;
+	game->p1.y = cub->map.starting_pos.y * TILE + TILE / 2;
 	game->img.mlx_img = mlx_new_image(game->mlx, WIN_LENGHT, WIN_HEIGHT);
 	if (!game->img.mlx_img)
 		return (E_ALLOCATION_FAILURE);
