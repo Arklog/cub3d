@@ -44,11 +44,10 @@ static t_color	get_color_from_animated(union u_texture *tex,
 	return (get_color_from_tex(&placeholder, x, y));
 }
 
-t_color (*const g_tex_lookup[3])(union u_texture *, double, double) = {
-	get_color_from_color,
-	get_color_from_tex,
-	get_color_from_animated
-};
+t_color (*const g_tex_lookup[3])(union u_texture *, double, double ) = {
+get_color_from_color,
+get_color_from_tex,
+get_color_from_animated};
 
 t_color	get_pixel_color(t_cub3d *cub, t_texture_index idx, double x, double y)
 {

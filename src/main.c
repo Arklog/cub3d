@@ -55,8 +55,8 @@ int	main(int argc, char **argv)
 	if (convert_game_datas(&cub3d))
 		exit_cub3d(&cub3d, E_ALLOCATION_FAILURE);
 	ft_playerview(game_data);
-	mlx_hook(game_data->window, 2, 1L<<0, ft_key_press, game_data);
-	mlx_hook(game_data->window, 3, 1L<<1, ft_key_release, game_data);
+	mlx_hook(game_data->window, 2, 1L << 0, ft_key_press, game_data);
+	mlx_hook(game_data->window, 3, 1L << 1, ft_key_release, game_data);
 	// mlx_hook(game_data->window, 17, 1L << 17, ft_exit_redcross, game_data);
 	mlx_loop_hook(game_data->mlx, ft_key_event, game_data);
 	mlx_loop(game_data->mlx);

@@ -35,7 +35,7 @@ static const char	*g_error_msg[E_ERROR_COUNT] = {
 
 static void	free_texture(t_texture *tex, t_cub3d *cub)
 {
-	size_t 				i;
+	size_t				i;
 	t_animated_texture	*atex;
 
 	if (tex->type == T_TEXTURE && tex->u_data.texture.data)
@@ -54,7 +54,7 @@ static void	free_texture(t_texture *tex, t_cub3d *cub)
 
 static void	free_mlx(t_cub3d *cub)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 6)
@@ -80,7 +80,7 @@ static void	free_parser(t_parser *parser)
 		free(parser->lines);
 }
 
-static void free_map(t_map *map)
+static void	free_map(t_map *map)
 {
 	if (!map)
 		return ;

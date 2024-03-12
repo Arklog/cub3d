@@ -13,7 +13,7 @@ t_errors	push(t_posstack **stack, t_pos pos)
 	return (E_NO_ERROR);
 }
 
-t_errors pop(t_posstack **stack, t_pos *pos)
+t_errors	pop(t_posstack **stack, t_pos *pos)
 {
 	t_posstack	*tmp;
 
@@ -24,13 +24,13 @@ t_errors pop(t_posstack **stack, t_pos *pos)
 	return (E_NO_ERROR);
 }
 
-t_errors peek(t_posstack *stack, t_pos *pos)
+t_errors	peek(t_posstack *stack, t_pos *pos)
 {
 	*pos = stack->pos;
 	return (E_NO_ERROR);
 }
 
-t_errors clear(t_posstack **stack)
+t_errors	clear(t_posstack **stack)
 {
 	t_posstack	*tmp;
 
