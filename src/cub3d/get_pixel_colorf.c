@@ -75,8 +75,8 @@ t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 		idx = TEXTURE_EAST;
 		x = (float)((int)wall.y % TILE) / (float)TILE;
 	}
-	if (x < 0 || x > 1 || y < 0 || y > 1)
-		exit_cub3d(cub, E_TEXTURE_ERROR);
+//	if (x < 0 || x > 1 || y < 0 || y > 1)
+//		exit_cub3d(cub, E_TEXTURE_ERROR);
 	tex = cub->textures + idx;
 	return (g_tex_lookup[tex->type](&(tex->u_data), x, y));
 }

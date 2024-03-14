@@ -38,6 +38,7 @@ void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height, t_cub3d *
 {
 	int	i;
 	int	tmp;
+	t_color	color;
 
 	i = 0;
 	tmp = top_wall;
@@ -45,9 +46,10 @@ void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height, t_cub3d *
 		top_wall = 0;
 	while (i < pro_height && (top_wall + i) <= (WIN_HEIGHT - 1))
 	{
-		ft_put_pixel(img, column, top_wall + i,
-					 get_pixel_colorf(cub, wall,
-									  fmin((double)(i + abs(tmp)) / (double)pro_height, 1)).value, cub);
+		color = get_pixel_colorf(cub, wall, fmin((double)(i + abs(tmp)) / (double)pro_height, 1));
+		color = get_pixel_colorf(cub, wall, fmin((double)(i) / (double)pro_height, 1));
+		ft_put_pixel(img, column, top_wall + i, color.value, cub);
+//		ft_put_pixel(img, column, top_wall + i, 0xffffffff, cub);
 		i++;
 	}
 //	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.window, img.mlx_img, 0, 0);
