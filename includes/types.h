@@ -101,7 +101,7 @@ typedef struct s_map {
 # ifdef LITTLE_ENDIAN
 
 typedef union u_color {
-	struct {
+	struct __attribute__((packed)) {
 		u_int8_t	a;
 		u_int8_t	r;
 		u_int8_t	g;
@@ -113,7 +113,7 @@ typedef union u_color {
 # else
 
 typedef union u_color {
-	struct {
+	struct __attribute__((packed)) {
 		u_int8_t	b;
 		u_int8_t	g;
 		u_int8_t	r;

@@ -71,9 +71,7 @@ int			ft_isspacedigitstr(const char *str);
  * @param y 	Relative position of the texture y
  * @return t_color 
  */
-t_color		get_pixel_colorf(t_cub3d *cub, t_texture_index idx, double x, double y);
-
-t_color		get_pixel_color(t_cub3d *cub, t_texture_index idx, int x, int y);
+t_color		get_pixel_colorf(t_cub3d *cub, t_point wall, double y);
 
 int			ft_key_event(t_game *game);
 int			ft_key_press(int keycode, t_game *game);

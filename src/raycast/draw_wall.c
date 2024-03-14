@@ -14,7 +14,7 @@
 
 /* if endian == 1, the Most Significant Byte(MSB) is leftmost */
 
-void	ft_put_pixel(t_img img, int x, int y, int color)
+void	ft_put_pixel(t_img img, int x, int y, u_int32_t color, t_cub3d *cub3d)
 {
 	char	*pixel;
 	int		i;
@@ -24,27 +24,33 @@ void	ft_put_pixel(t_img img, int x, int y, int color)
 	while (i >= 0)
 	{
 		if (img.endian == 1)
-			*pixel++ = (color >> i) & 0xFF;
+			*pixel++ = (char)((color >> i) & 0xFF);
 		else
-			*pixel++ = (color >> (img.bits_per_pixel - 8 - i)) & 0xFF;
+			*pixel++ = (char)((color >> (img.bits_per_pixel - 8 - i)) & 0xFF);
 		i = i - 8;
 	}
+//	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.window, img.mlx_img, 0, 0);
 }
 
 /*x : column, y : top_wall(where we start to draw the top of the wall)*/
 
-void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height)
+void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height, t_cub3d *cub, t_point wall)
 {
 	int	i;
+	int	tmp;
 
 	i = 0;
+	tmp = top_wall;
 	if (top_wall < 0)
 		top_wall = 0;
 	while (i < pro_height && (top_wall + i) <= (WIN_HEIGHT - 1))
 	{
-		ft_put_pixel(img, column, top_wall + i, 70 << 16 | 70 << 8);
+		ft_put_pixel(img, column, top_wall + i,
+					 get_pixel_colorf(cub, wall,
+									  fmin((double)(i + abs(tmp)) / (double)pro_height, 1)).value, cub);
 		i++;
 	}
+//	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.window, img.mlx_img, 0, 0);
 }
 
 // function that calculate all the dimensions of the wall and the distance
@@ -62,5 +68,5 @@ void	ft_display(t_game *game, t_point wall, t_ray ray)
 	pro_height = floor(((WIN_LENGHT / 2) / tan(30 * (double)(M_PI / 180))) * 
 		(TILE / dist));
 	top_wall = (WIN_HEIGHT / 2) - (pro_height / 2);
-	ft_draw_wall(game->img, ray.column, top_wall, pro_height);
+	ft_draw_wall(game->img, ray.column, top_wall, pro_height, game->cub3d, wall);
 }
