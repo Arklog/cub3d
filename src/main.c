@@ -16,6 +16,24 @@
 #include "mlx.h"
 #include "ft_string.h"
 
+static void		set_pos(t_cub3d *cub)
+{
+	t_player	*p;
+	t_map		*map;
+	char 		tile;
+
+	p = &(cub->game.p1);
+	map = &(cub->map);
+	tile = map->map[map->starting_pos.y][map->starting_pos.x];
+	if (tile == EAST)
+		p->pov = 0;
+	else if (tile == NORTH)
+		p->pov = 90;
+	else if (tile == WEST)
+		p->pov = 180;
+	else
+		p->pov = 270;
+}
 static t_errors	convert_game_datas(t_cub3d *cub)
 {
 	t_game				*game;
@@ -33,6 +51,7 @@ static t_errors	convert_game_datas(t_cub3d *cub)
 	game->p1.tile_y = cub->map.starting_pos.y;
 	game->p1.x = cub->map.starting_pos.x * TILE + TILE / 2;
 	game->p1.y = cub->map.starting_pos.y * TILE + TILE / 2;
+	set_pos(cub);
 	game->img.mlx_img = mlx_new_image(game->mlx, WIN_LENGHT, WIN_HEIGHT);
 	if (!game->img.mlx_img)
 		return (E_ALLOCATION_FAILURE);
