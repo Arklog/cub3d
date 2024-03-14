@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:06:00 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/01 16:21:40 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:29:42 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,11 @@ t_errors	load_texture(const char *line, t_texture *tex, t_cub3d *cub);
  * @return t_errors 
  */
 t_errors	check_map(t_map *map);
+
+t_errors	setup_map(t_map *map);
+
+t_errors	create_map_check_buffer(t_map *map, char ***placeholder);
+
+void		free_split(char **buff);
 
 #endif //CUB3D_MAP_H

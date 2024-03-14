@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:21:48 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/04 14:13:53 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:22:53 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "map.h"
 #include "defines.h"
 
-static t_errors	load_one_texture(t_cub3d *cub, const char *line, int8_t idx, const char *test)
+static t_errors	load_one_texture(t_cub3d *cub, const char *line,
+	int8_t idx, const char *test)
 {
 	t_texture	t;
 	t_errors	code;
@@ -27,7 +28,8 @@ static t_errors	load_one_texture(t_cub3d *cub, const char *line, int8_t idx, con
 	wid = *((u_int16_t *)test);
 	code = E_NO_ERROR;
 	if (texture_is_color(line)
-		&& wid != NORTH_ID && wid != SOUTH_ID && wid != WEST_ID && wid != EAST_ID)
+		&& wid != NORTH_ID && wid != SOUTH_ID
+		&& wid != WEST_ID && wid != EAST_ID)
 		code = load_color(line, &t);
 	else if (texture_is_animated(line))
 		code = load_animated(line, &t, cub);
@@ -59,7 +61,7 @@ static int8_t	find_index(const char *line)
 
 static int	load_one(t_cub3d *cub, const char *line, u_int8_t *load_flags)
 {
-	int8_t	idx;
+	int8_t		idx;
 	const char	*tmp;
 
 	(void)cub;
@@ -89,7 +91,8 @@ t_errors	load_textures(t_cub3d *cube)
 	load_flags = 0;
 	lines = (const char **)(cube->parser.lines);
 	i = 0;
-	while (i < cube->parser.nlines && lines[i] && load_flags != TEXTURES_FLAG_FULL)
+	while (i < cube->parser.nlines && lines[i]
+		&& load_flags != TEXTURES_FLAG_FULL)
 	{
 		err = load_one(cube, lines[i++], &load_flags);
 		if (err)

@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:47:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/12 17:30:45 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:27:27 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,39 +44,30 @@ static t_color	get_color_from_animated(union u_texture *tex,
 	return (get_color_from_tex(&placeholder, x, y));
 }
 
-t_color (*const g_tex_lookup[3])(union u_texture *, double x, double y) = {
+t_color	(*const g_tex_lookup[3])(union u_texture *, double, double) = {
 get_color_from_color,
 get_color_from_tex,
-get_color_from_animated};
+get_color_from_animated
+};
 
 t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 {
-	t_texture	*tex;
-	t_texture_index idx;
-	double 		x;
+	t_texture		*tex;
+	t_texture_index	idx;
+	double			x;
 
-	if (wall.direction == NORTH)
-	{
-		idx = TEXTURE_NORTH;
-		x = 1.0f - (float)((int)wall.x % TILE) / (float)TILE;
-	}
-	else if (wall.direction == SOUTH)
-	{
-		idx = TEXTURE_SOUTH;
+	if (wall.direction == NORTH || wall.direction == SOUTH)
 		x = (float)((int)wall.x % TILE) / (float)TILE;
-	}
+	else if (wall.direction == WEST || wall.direction == EAST)
+		x = (float)((int)wall.y % TILE) / (float)TILE;
+	if (wall.direction == NORTH)
+		idx = TEXTURE_NORTH;
+	else if (wall.direction == SOUTH)
+		idx == TEXTURE_SOUTH;
 	else if (wall.direction == WEST)
-	{
-		idx = TEXTURE_WEST;
-		x = (float)((int)wall.y % TILE) / (float)TILE;
-	}
+		idx == TEXTURE_WEST;
 	else
-	{
 		idx = TEXTURE_EAST;
-		x = (float)((int)wall.y % TILE) / (float)TILE;
-	}
-//	if (x < 0 || x > 1 || y < 0 || y > 1)
-//		exit_cub3d(cub, E_TEXTURE_ERROR);
 	tex = cub->textures + idx;
 	return (g_tex_lookup[tex->type](&(tex->u_data), x, y));
 }
