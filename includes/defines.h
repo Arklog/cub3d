@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:20:13 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/08 16:02:28 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:33:06 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 # define WIN_HEIGHT 	900
 # define TILE 			256
 
-
 /**
  * The map symbols
  */
@@ -58,13 +57,11 @@
 # define PLAYERSTR "NSWE"
 # define MAP_ALLOWED_CHAR "NSEW01 \f\n\r\t\v"
 
-
 /**
  * Is used to check if each texture is loaded
  * same as 0011111 in binary
  */
 # define TEXTURES_FLAG_FULL 63
-
 
 /**
  * The error codes
@@ -96,7 +93,6 @@ typedef enum e_errors {
 	E_ERROR_COUNT,
 }	t_errors;
 
-
 /**
  * The index of the textures one loaded in the buffer
  */
@@ -109,7 +105,6 @@ typedef enum e_texture_index {
 	TEXTURE_CEILING,
 	TEXTURE_COUNT,
 }	t_texture_index;
-
 
 /**
  * The differents kinds of texture, is used to allow some kind

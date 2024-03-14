@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/12 15:41:40 by pierre           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:32:27 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
  * Used in one file to gain one argument
  */
 typedef struct s_buffsize {
-	size_t sn;
-	size_t nn;
-} t_bsize;
+	size_t	sn;
+	size_t	nn;
+}	t_bsize;
 
 typedef struct s_pos {
 	int	x;
@@ -62,7 +62,6 @@ typedef struct s_player
 	double	pov;
 }	t_player;
 
-
 /**
  * @brief The parser structure
  *
@@ -80,7 +79,6 @@ typedef struct s_parser {
 	size_t	line_index;
 }	t_parser;
 
-
 /**
  * @brief The map structure
  * 
@@ -96,7 +94,6 @@ typedef struct s_map {
 	size_t	height;
 	t_pos	starting_pos;
 }	t_map;
-
 
 # ifdef LITTLE_ENDIAN
 
@@ -123,7 +120,6 @@ typedef union u_color {
 }	t_color;
 
 # endif
-
 
 /**
  * @brief A texture
@@ -193,7 +189,7 @@ typedef struct s_cub3d {
 		void	*mlx;
 		void	*window;
 	} mlx;
-	t_game		game;
+	t_game			game;
 }	t_cub3d;
 
 #endif //CUB3D_TYPES_H

@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:06:00 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/14 17:29:42 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:31:48 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int			texture_is_texture(const char *line);
  * @param tex 
  * @param cub 
  * 
- * @return E_NO_ERROR on success, E_TEXTURE_INVALID_PATH if the path is invalid or E_MLX_IMAGE if the image could not be loaded
+ * @return E_NO_ERROR on success, E_TEXTURE_INVALID_PATH if the path is 
+ * invalid or E_MLX_IMAGE if the image could not be loaded
  */
 t_errors	load_texture(const char *line, t_texture *tex, t_cub3d *cub);
 
