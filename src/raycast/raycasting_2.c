@@ -6,34 +6,36 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:29:45 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/14 16:43:59 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:29:21 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-/* function that search til it finds a wall, with diff having 
-the distance in x and y for the next intersection with a line
-of the grid (a possible wall) */
+/* function that search til it finds a wall, with diff having the distance in x
+and y for the next intersection with a line of the grid (a possible wall)
 
-t_point	ft_find_horizontal(t_game *game, t_point a, t_point diff, double ray_angle)
+current.y - 1 : for tile adjustement for horizontal intersection above
+player position */
+
+t_point	ft_find_horizontal(t_game *game, t_point a, t_point diff, double ray_a)
 {
 	t_point	current;
 
 	current = a;
-	while ((current.x >= 0 && current.x / TILE < game->map_lenght) && 
-		(current.y >= TILE && current.y / TILE < game->map_height))
+	while ((current.x >= 0 && current.x / TILE < game->map_lenght)
+		&& (current.y >= TILE && current.y / TILE < game->map_height))
 	{
-		if (ray_angle <= 180 && 
-		game->map_data[(int)current.y / TILE - 1][(int)floor(current.x) / TILE] == WALL)
+		if (ray_a <= 180 && game->map_data[(int)current.y / TILE - 1]
+			[(int)floor(current.x) / TILE] == WALL)
 		{
-			current.y -= 1;					//tile adjustement for horizontal intersection above player position
-			current.x = floor(current.x);	//double type value to bring more precision for the ray, rounded down
+			current.y -= 1;
+			current.x = floor(current.x);
 			return (current);
 		}
-		else if (ray_angle > 180 && 
-		(game->map_data[(int)current.y / TILE][(int)floor(current.x) / TILE] == WALL))
+		else if (ray_a > 180 && (game->map_data[(int)current.y / TILE]
+				[(int)floor(current.x) / TILE] == WALL))
 		{
 			current.x = floor(current.x);
 			return (current);
@@ -44,23 +46,23 @@ t_point	ft_find_horizontal(t_game *game, t_point a, t_point diff, double ray_ang
 	return (game->blindspot);
 }
 
-t_point	ft_find_vertical(t_game *game, t_point a, t_point diff, double ray_angle)
+t_point	ft_find_vertical(t_game *game, t_point a, t_point diff, double ray_a)
 {
 	t_point	current;
 
 	current = a;
-	while ((current.x >= TILE && current.x / TILE < game->map_lenght) && 
-		(current.y >= 0 && current.y / TILE < game->map_height))
+	while ((current.x >= TILE && current.x / TILE < game->map_lenght)
+		&& (current.y >= 0 && current.y / TILE < game->map_height))
 	{
-		if ((ray_angle >= 90 && ray_angle <= 270) && 
-		game->map_data[(int)floor(current.y) / TILE][(int)current.x / TILE - 1] == WALL)
+		if (game->map_data[(int)floor(current.y) / TILE][(int)current.x / TILE
+			- 1] == WALL && (ray_a >= 90 && ray_a <= 270))
 		{
 			current.x -= 1;
 			current.y = floor(current.y);
 			return (current);
 		}
-		else if (!(ray_angle >= 90 && ray_angle <= 270) && 
-		(game->map_data[(int)floor(current.y) / TILE][(int)current.x / TILE] == WALL))
+		else if ((game->map_data[(int)floor(current.y) / TILE][(int)current.x
+				/ TILE] == WALL) && !(ray_a >= 90 && ray_a <= 270))
 		{
 			current.y = floor(current.y);
 			return (current);

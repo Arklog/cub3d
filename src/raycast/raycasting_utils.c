@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:30:22 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/09 12:28:37 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:21:40 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 double	distance(t_player p1, t_point a)
 {
-	if (a.x == 0 && a.y == 0)	//if blindspot
+	if (a.x == 0 && a.y == 0)
 		return (DBL_MAX);
 	return (sqrt(pow(p1.x - a.x, 2) + pow(p1.y - a.y, 2)));
 }
