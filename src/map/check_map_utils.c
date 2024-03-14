@@ -12,6 +12,8 @@
 
 #include "map.h"
 
+#define CHECKBUFF_TOCHECK ' '
+
 t_errors	setup_map(t_map *map)
 {
 	size_t	i;

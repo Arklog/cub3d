@@ -62,6 +62,7 @@ t_errors	load_color(const char *line, t_texture *tex)
 	t_color	c;
 
 	ft_memset(&c, 0, sizeof(t_color));
+	c.a = 0xff;
 	line = parse_one((char *)line, &c.r, 0);
 	if (!line)
 		return (E_COLOR_INVALID);

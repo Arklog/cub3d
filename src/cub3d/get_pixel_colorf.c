@@ -63,9 +63,9 @@ t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 	if (wall.direction == NORTH)
 		idx = TEXTURE_NORTH;
 	else if (wall.direction == SOUTH)
-		idx == TEXTURE_SOUTH;
+		idx = TEXTURE_SOUTH;
 	else if (wall.direction == WEST)
-		idx == TEXTURE_WEST;
+		idx = TEXTURE_WEST;
 	else
 		idx = TEXTURE_EAST;
 	tex = cub->textures + idx;
