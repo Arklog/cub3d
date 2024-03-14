@@ -49,8 +49,10 @@ void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height, t_cub3d *
 	i = 0;
 	while (i < pro_height && (top_wall + i) <= (WIN_HEIGHT - 1))
 	{
-		color = get_pixel_colorf(cub, wall, fmin((double)(i + abs(tmp)) / (double)pro_height, 1));
-		color = get_pixel_colorf(cub, wall, fmin((double)(i) / (double)pro_height, 1));
+		if (tmp < 0)
+			color = get_pixel_colorf(cub, wall, fmin((double)(i + abs(tmp)) / (double)pro_height, 1));
+		else
+			color = get_pixel_colorf(cub, wall, fmin((double)(i) / (double)pro_height, 1));
 		ft_put_pixel(img, column, top_wall + i, color.value, cub);
 		i++;
 	}
