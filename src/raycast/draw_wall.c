@@ -44,15 +44,18 @@ void	ft_draw_wall(t_img img, int column, int top_wall, int pro_height, t_cub3d *
 	tmp = top_wall;
 	if (top_wall < 0)
 		top_wall = 0;
+	while (i < top_wall)
+		ft_put_pixel(img, column, i++, cub->textures[TEXTURE_CEILING].u_data.color.value, cub);
+	i = 0;
 	while (i < pro_height && (top_wall + i) <= (WIN_HEIGHT - 1))
 	{
 		color = get_pixel_colorf(cub, wall, fmin((double)(i + abs(tmp)) / (double)pro_height, 1));
 		color = get_pixel_colorf(cub, wall, fmin((double)(i) / (double)pro_height, 1));
 		ft_put_pixel(img, column, top_wall + i, color.value, cub);
-//		ft_put_pixel(img, column, top_wall + i, 0xffffffff, cub);
 		i++;
 	}
-//	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.window, img.mlx_img, 0, 0);
+	while (top_wall + i <= WIN_HEIGHT - 1)
+		ft_put_pixel(img, column, top_wall + i++, cub->textures[TEXTURE_FLOOR].u_data.color.value, cub);
 }
 
 // function that calculate all the dimensions of the wall and the distance
