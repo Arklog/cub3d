@@ -6,7 +6,7 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:29:45 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/09 12:30:14 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/14 16:43:59 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_point	ft_find_horizontal(t_game *game, t_point a, t_point diff, double ray_ang
 
 	current = a;
 	while ((current.x >= 0 && current.x / TILE < game->map_lenght) && 
-		(current.y >= 0 && current.y / TILE < game->map_height))
+		(current.y >= TILE && current.y / TILE < game->map_height))
 	{
 		if (ray_angle <= 180 && 
 		game->map_data[(int)current.y / TILE - 1][(int)floor(current.x) / TILE] == WALL)
@@ -49,7 +49,7 @@ t_point	ft_find_vertical(t_game *game, t_point a, t_point diff, double ray_angle
 	t_point	current;
 
 	current = a;
-	while ((current.x >= 0 && current.x / TILE < game->map_lenght) && 
+	while ((current.x >= TILE && current.x / TILE < game->map_lenght) && 
 		(current.y >= 0 && current.y / TILE < game->map_height))
 	{
 		if ((ray_angle >= 90 && ray_angle <= 270) && 
