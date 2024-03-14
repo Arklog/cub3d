@@ -25,14 +25,14 @@ void	ft_set_wall_dir(t_player p1, t_point *wall, int type)
 {
 	if (type == 1)
 	{
-		if (p1.tile_y > wall->y / TILE)
+		if (p1.y > wall->y)
 			wall->direction = SOUTH;
 		else
 			wall->direction = NORTH;
 	}
 	else
 	{
-		if (p1.tile_x > wall->x / TILE)
+		if (p1.x > wall->x)
 			wall->direction = EAST;
 		else
 			wall->direction = WEST;
