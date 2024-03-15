@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:08:18 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/14 17:30:54 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:35:35 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include "mlx.h"
 #include "ft_string.h"
 
-static void		set_pos(t_cub3d *cub)
+static void	set_pos(t_cub3d *cub)
 {
 	t_player	*p;
 	t_map		*map;
-	char 		tile;
+	char		tile;
 
 	p = &(cub->game.p1);
 	map = &(cub->map);
@@ -34,6 +34,7 @@ static void		set_pos(t_cub3d *cub)
 	else
 		p->pov = 270;
 }
+
 static t_errors	convert_game_datas(t_cub3d *cub)
 {
 	t_game				*game;

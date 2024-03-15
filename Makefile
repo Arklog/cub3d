@@ -4,6 +4,7 @@ SRC	:=	./src/cub3d/ft_isspacestr.c \
 		./src/cub3d/exit_cub3d.c \
 		./src/cub3d/parse_map.c \
 		./src/cub3d/get_pixel_colorf.c \
+		./src/cub3d/getcol.c \
 		./src/raycast/draw_wall.c \
 		./src/raycast/player_move.c \
 		./src/raycast/mlx.c \

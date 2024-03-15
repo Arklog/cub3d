@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_colorf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:47:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/15 14:29:16 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:54:55 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ static t_color	get_color_from_animated(union u_texture *tex,
 	return (get_color_from_tex(&placeholder, x, y));
 }
 
-t_color	(*const g_tex_lookup[3])(union u_texture *, double, double) = {
-get_color_from_color,
-get_color_from_tex,
-get_color_from_animated
-};
+t_color	tex_lookup(t_texture_type type,
+	union u_texture *tex, double x, double y)
+{
+	if (type == T_COLOR)
+		return (get_color_from_color(tex, x, y));
+	else if (type == T_ANIMATED_TEXTURE)
+		return (get_color_from_animated(tex, x, y));
+	else
+		return (get_color_from_tex(tex, x, y));
+}
 
 t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 {
@@ -69,5 +74,5 @@ t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 	else
 		idx = TEXTURE_EAST;
 	tex = cub->textures + idx;
-	return (g_tex_lookup[tex->type](&(tex->u_data), x, y));
+	return (tex_lookup(tex->type, &(tex->u_data), x, y));
 }

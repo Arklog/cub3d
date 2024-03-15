@@ -6,7 +6,7 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:28:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/14 17:32:27 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:46:18 by pducloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct s {
 	union u_texture	u_data;
 }	t_texture;
 
+// w is a temporary placeholder
 typedef struct s_game
 {
 	char		**map_data;
@@ -179,6 +180,7 @@ typedef struct s_game
 	t_point		blindspot;
 	t_img		img;
 	void		*cub3d;
+	t_point		w;
 }	t_game;
 
 typedef struct s_cub3d {
