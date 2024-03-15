@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:09:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/03/15 14:42:25 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:27:53 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_point		ft_find_horizontal(t_game *game, t_point a,
 t_point		ft_find_vertical(t_game *game, t_point a,
 				t_point diff, double ray_angle);
 void		ft_move_camera(t_game *game);
+int			ft_exit_redcross(t_game *game);
 
 u_int32_t	getcol(t_texture_index idx, t_cub3d *cub);
 

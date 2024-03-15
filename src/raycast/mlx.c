@@ -6,11 +6,17 @@
 /*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 03:19:13 by laliao            #+#    #+#             */
-/*   Updated: 2024/03/11 17:25:28 by laliao           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:27:35 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_exit_redcross(t_game *game)
+{
+	exit_cub3d(game->cub3d, E_NO_ERROR);
+	return (0);
+}
 
 int	ft_key_press(int keycode, t_game *game)
 {
