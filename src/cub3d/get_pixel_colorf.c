@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_colorf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:47:52 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/14 17:27:27 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:29:16 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_color	get_pixel_colorf(t_cub3d *cub, t_point wall, double y)
 
 	if (wall.direction == NORTH || wall.direction == SOUTH)
 		x = (float)((int)wall.x % TILE) / (float)TILE;
-	else if (wall.direction == WEST || wall.direction == EAST)
+	else
 		x = (float)((int)wall.y % TILE) / (float)TILE;
 	if (wall.direction == NORTH)
 		idx = TEXTURE_NORTH;
