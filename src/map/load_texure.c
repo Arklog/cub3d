@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texure.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laliao <laliao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:47:04 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/05 15:58:37 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:41:36 by laliao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_errors	load_texture(const char *line, t_texture *tex, t_cub3d *cub)
 {
 	t_texture_simple	t;
-	char 				*iter;
+	char				*iter;
 
 	ft_memset(&t, 0, sizeof(t_texture_simple));
 	while (*line && ft_isspace(*line))
