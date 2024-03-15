@@ -35,16 +35,16 @@ INC	:= -Ilibft -Iminilibx-linux -Iincludes
 CFLAGS	:= -Wall -Wextra -Werror -g $(INC)
 LIB	:= -Llibft -lft -Lminilibx-linux -lmlx -lm -lX11 -lXext
 
-all: | $(LIBFT) $(MLX) $(NAME) ;
+all: $(NAME) ;
+
+$(NAME): $(LIBFT) $(MLX) $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIB)
 
 $(LIBFT):
 	$(MAKE) -C libft
 
 $(MLX):
 	$(MAKE) -C minilibx-linux
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(LIB)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
