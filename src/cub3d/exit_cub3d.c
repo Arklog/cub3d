@@ -31,6 +31,7 @@ static const char	*g_error_msg[E_ERROR_COUNT] = {
 [E_TEXTURE_INVALID_PATH] = "Invalid texture path",
 [E_TEXTURE_MISSING] = "Missing texture",
 [E_TEXTURE_INVALID_INDEX] = "Invalid texture index (expected NO,SO,WE,EA,F,C)",
+[E_COLOR_INVALID] = "Invalid color",
 [E_ALLOCATION_FAILURE] = "Memory allocation failure",
 };
 

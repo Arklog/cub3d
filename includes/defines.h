@@ -56,6 +56,7 @@
 # define NONE ' '
 # define PLAYERSTR "NSWE"
 # define MAP_ALLOWED_CHAR "NSEW01 \f\n\r\t\v"
+# define CHAR_SPACES " \f\n\r\t\v"
 
 /**
  * Is used to check if each texture is loaded

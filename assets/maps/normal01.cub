@@ -1,7 +1,7 @@
 SO ./assets/textures/NO.xpm
 NO ./assets/textures/NO.xpm
 WE ./assets/textures/NO.xpm
-EA ./assets/textures/NO.xpm
+EA ./assets/textures/NO.xpm                    
 F 255,255,255
 C 255,0,255
 11

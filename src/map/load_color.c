@@ -30,6 +30,11 @@ static u_int8_t	strtobyte(const char *str, char **endptr)
 			return (v);
 		}
 		v += (needle - base);
+		if (v > 255)
+		{
+			*endptr = NULL;
+			return (v);
+		}
 	}
 	return (v);
 }

@@ -11,16 +11,21 @@
 /* ************************************************************************** */
 
 #include "map.h"
+#include "cub3d.h"
 
 t_errors	load_texture(const char *line, t_texture *tex, t_cub3d *cub)
 {
 	t_texture_simple	t;
+	char 				*iter;
 
 	ft_memset(&t, 0, sizeof(t_texture_simple));
 	while (*line && ft_isspace(*line))
 		++line;
 	if (!*line)
 		return (E_TEXTURE_INVALID_PATH);
+	iter = ft_strchr1(line, CHAR_SPACES);
+	if (iter && ft_isspacestr(iter))
+		*iter = 0;
 	t.data = mlx_xpm_file_to_image(cub->mlx.mlx,
 			(char *)line, &t.width, &t.height);
 	if (!t.data)
