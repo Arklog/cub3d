@@ -99,10 +99,10 @@ typedef struct s_map {
 
 typedef union u_color {
 	struct __attribute__((packed)) {
-		u_int8_t	a;
-		u_int8_t	r;
-		u_int8_t	g;
 		u_int8_t	b;
+		u_int8_t	g;
+		u_int8_t	r;
+		u_int8_t	a;
 	};
 	u_int32_t	value;
 }	t_color;
@@ -111,10 +111,10 @@ typedef union u_color {
 
 typedef union u_color {
 	struct __attribute__((packed)) {
-		u_int8_t	b;
-		u_int8_t	g;
-		u_int8_t	r;
 		u_int8_t	a;
+		u_int8_t	r;
+		u_int8_t	g;
+		u_int8_t	b;
 	};
 	u_int32_t	value;
 }	t_color;

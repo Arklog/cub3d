@@ -1,9 +1,9 @@
 SO ./assets/textures/NO.xpm
 NO ./assets/textures/NO.xpm
+F 85,255,0
 WE ./assets/textures/NO.xpm
-EA ./assets/textures/NO.xpm                    
-F 255,255,255
-C 255,0,255
+EA ./assets/textures/NO.xpm
+C 255,255,255
 11
 101        1
 1001111111101
