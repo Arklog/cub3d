@@ -24,6 +24,7 @@
 # define BUFFER_SIZE 4096
 
 # define MAPFILE_CHARSET "01NSEW"
+# define CHECKBUFF_TOCHECK ' '
 
 /**
  * Load the file and store store it in the parser
@@ -93,6 +94,8 @@ t_errors	check_map(t_map *map);
 t_errors	setup_map(t_map *map);
 
 t_errors	create_map_check_buffer(t_map *map, char ***placeholder);
+
+t_errors	check_all_walls(t_map *map, char **checkbuff);
 
 void		free_split(char **buff);
 

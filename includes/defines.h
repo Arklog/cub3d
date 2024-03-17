@@ -48,7 +48,7 @@
  * The map symbols
  */
 # define WALL '1'
-# define EMPTY '0'
+# define PATH '0'
 # define NORTH 'N'
 # define SOUTH 'S'
 # define WEST 'W'

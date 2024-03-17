@@ -37,7 +37,7 @@ t_errors	copy_line(const char *line, char *buffer, size_t max_len)
 	len = ft_strlen(line);
 	remaining = max_len - len;
 	ft_memcpy(buffer, line, len);
-	ft_memset(buffer + len, EMPTY, remaining);
+	ft_memset(buffer + len, NONE, remaining);
 	buffer[max_len] = 0;
 	return (E_NO_ERROR);
 }
