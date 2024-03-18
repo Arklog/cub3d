@@ -1,0 +1,12 @@
+SO ./assets/textures/SO.xpm
+NO ./assets/textures/NO.xpm
+F 85,255,0
+WE ./assets/textures/Untitled.xpm
+EA ./assets/textures/EA.xpm
+C 255,255,255
+11
+101        1
+1001111111101
+10000000000W1  111
+1111111111111  101
+                 1
