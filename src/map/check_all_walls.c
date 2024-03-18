@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_all_walls.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pierre </var/spool/mail/pierre>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/18 15:26:55 by pierre            #+#    #+#             */
+/*   Updated: 2024/03/18 15:29:11 by pierre           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "stack.h"
 #include "map.h"
@@ -10,7 +22,7 @@
  * @param checkbuff
  */
 static t_errors	gen_new_pos_and_push(t_posstack **stack,
-										t_pos cpos, char **checkbuff, t_map *map)
+			t_pos cpos, char **checkbuff, t_map *map)
 {
 	t_pos	newpos[4];
 	t_pos	c;
@@ -25,7 +37,7 @@ static t_errors	gen_new_pos_and_push(t_posstack **stack,
 	{
 		c = newpos[i++];
 		if (!(c.x < 0 || c.y < 0
-			  || (size_t)c.x >= map->width || (size_t)c.y >= map->height)
+				|| (size_t)c.x >= map->width || (size_t)c.y >= map->height)
 			&& checkbuff[c.y][c.x] == CHECKBUFF_TOCHECK)
 		{
 			if (push(stack, c))
@@ -64,12 +76,12 @@ static t_errors	check_walls(t_map *map, char **checkbuff, t_pos pos)
 	return (E_NO_ERROR);
 }
 
-t_errors check_all_walls(t_map *map, char **checkbuff)
+t_errors	check_all_walls(t_map *map, char **checkbuff)
 {
-	int	i;
-	int	j;
-	char 	tile;
-	char 	checkchar;
+	int		i;
+	int		j;
+	char	tile;
+	char	checkchar;
 
 	i = 0;
 	while (i < (int)map->height)

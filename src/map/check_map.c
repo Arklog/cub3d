@@ -6,15 +6,13 @@
 /*   By: pducloux <pducloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:11:59 by pducloux          #+#    #+#             */
-/*   Updated: 2024/03/14 17:30:09 by pducloux         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:28:56 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include "stack.h"
 #include <stdio.h>
-
-
 
 static t_errors	check_invalid_char(t_map *map)
 {
