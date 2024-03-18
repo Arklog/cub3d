@@ -19,6 +19,7 @@ SRC	:=	./src/cub3d/ft_isspacestr.c \
 		./src/map/texture_is_color.c \
 		./src/map/load_color.c \
 		./src/map/check_map.c \
+		./src/map/check_all_walls.c \
 		./src/map/load_animated.c \
 		./src/map/load_texure.c \
 		./src/map/load_map_file.c
